@@ -1,6 +1,5 @@
 package com.nessacademy.bean;
 
-import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -14,10 +13,11 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "uorder")
+@Table(name = "orders")
 public class Order{
 
-	@Id @GeneratedValue
+	@Id 
+	@GeneratedValue
     @Column(name = "order_id")
 	private int order_id;
 	
@@ -62,6 +62,40 @@ public class Order{
 	@Override
 	public String toString() {
 		return "Order [user_id=" + user.getLogin() + ", datetime=" + datetime + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((datetime == null) ? 0 : datetime.hashCode());
+		result = prime * result + order_id;
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (!(obj instanceof Order))
+			return false;
+		Order other = (Order) obj;
+		if (datetime == null) {
+			if (other.datetime != null)
+				return false;
+		} else if (!datetime.equals(other.datetime))
+			return false;
+		if (order_id != other.order_id)
+			return false;
+		if (user == null) {
+			if (other.user != null)
+				return false;
+		} else if (!user.equals(other.user))
+			return false;
+		return true;
 	}
 	
 	

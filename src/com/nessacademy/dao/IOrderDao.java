@@ -13,5 +13,5 @@ public interface IOrderDao {
      
      public Order findById(String id);
      
-     public List<Order> userOrders(String login);
+     //public List<Order> userOrders(String login);
 }

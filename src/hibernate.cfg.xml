@@ -19,6 +19,7 @@
 	
 	   <!-- List of XML mapping files -->
 	   <mapping class="com.nessacademy.bean.User"/>
+	   <mapping class="com.nessacademy.bean.Order"/>
 	
 		</session-factory>
 	      

@@ -6,7 +6,6 @@ import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
 import com.nessacademy.bean.Order;
-import com.nessacademy.bean.User;
 import com.nessacademy.hibernate.HibernateUtil;
 
 @Repository  
@@ -24,7 +23,8 @@ public class OrderDao implements IOrderDao{
 	@Override
 	public List<Order> orders() {
 		session.beginTransaction();
-    	List<Order> orders = session.createQuery("from Order").list();
+    	@SuppressWarnings("unchecked")
+		List<Order> orders = session.createSQLQuery("select * from orders").list();
     	session.getTransaction().commit();
     	return orders;
 	}
@@ -41,14 +41,15 @@ public class OrderDao implements IOrderDao{
 		return null;
 	}
 
+	/*
 	@Override
 	public List<Order> userOrders(String login) {
 		session.beginTransaction();
-    	List<Order> orders = session.createQuery("from Order join User where order.user_id = user.user_id").list();
+    	List<Order> orders = session.createQuery("from Orders join User where order.user_id = user.user_id").list();
     	session.getTransaction().commit();
     	return orders;
 	}
-
+*/
 	
 	
 }

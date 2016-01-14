@@ -13,8 +13,7 @@ public class OrderService {
     public OrderService(){
     	orderDao = new OrderDao();
     }
-    //-------------------------------------------------------------------------
-    
+
     public void add(User user){
             Order order = new Order();
             order.setUser(user);
