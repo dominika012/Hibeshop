@@ -21,7 +21,11 @@ public class OrderService {
     }
     
     public List<Order> orders() {
-	return orderDao.orders();
+    	return orderDao.orders();
     }
 	
+    public Order findById(Integer id){
+    	return orderDao.findById(id);
+    }
+    
 }

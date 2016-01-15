@@ -5,22 +5,24 @@
 	<hibernate-configuration>  
 	      
 	   <session-factory>
-	   <property name="hibernate.current_session_context_class">thread</property>
-	   <property name="hibernate.hbm2ddl.auto" >update</property>
-	    <property name="hibernate.enable_lazy_load_no_trans">true</property>
+	       
+		   <property name="hibernate.current_session_context_class">thread</property>
+		   <property name="hibernate.hbm2ddl.auto" >update</property>
+		    <property name="hibernate.enable_lazy_load_no_trans">true</property>
+		   
+		   <property name="hibernate.dialect"> org.hibernate.dialect.MySQLDialect</property>
+		   <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		
+		   <!-- Assume test is the database name -->
+		   <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hibeshop</property>
+		   <property name="hibernate.connection.username">root</property>
+		   <property name="hibernate.connection.password"></property>
+		
+		   <!-- List of XML mapping files -->
+		   <mapping class="com.nessacademy.bean.User"/>
+		   <mapping class="com.nessacademy.bean.Order"/>
+		   <mapping class="com.nessacademy.bean.Product"/>
 	   
-	   <property name="hibernate.dialect"> org.hibernate.dialect.MySQLDialect</property>
-	   <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-	
-	   <!-- Assume test is the database name -->
-	   <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hibeshop</property>
-	   <property name="hibernate.connection.username">root</property>
-	   <property name="hibernate.connection.password"></property>
-	
-	   <!-- List of XML mapping files -->
-	   <mapping class="com.nessacademy.bean.User"/>
-	   <mapping class="com.nessacademy.bean.Order"/>
-	
 		</session-factory>
 	      
 	</hibernate-configuration>  

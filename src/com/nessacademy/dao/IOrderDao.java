@@ -11,7 +11,7 @@ public interface IOrderDao {
      
      public void remove(Order order);
      
-     public Order findById(String id);
+     public Order findById(int id);
      
-     //public List<Order> userOrders(String login);
+     public List<Order> userOrders(String login);
 }

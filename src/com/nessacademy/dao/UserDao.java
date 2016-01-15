@@ -7,23 +7,26 @@ import com.nessacademy.hibernate.HibernateUtil;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
 @Repository  
 public class UserDao implements IUserDao{
 	
-	private Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+	private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 	
     @Override
     public void add(User user) {
+    	Session session = sessionFactory.getCurrentSession();
     	session.beginTransaction();
     	session.save(user);
     	session.getTransaction().commit();
-    	
     }
 
-    @Override
+	@SuppressWarnings("unchecked")
+	@Override
     public List<User> users() {
+		Session session = sessionFactory.getCurrentSession();
     	session.beginTransaction();
     	List<User> users = session.createQuery("from User").list();
     	session.getTransaction().commit();
@@ -57,15 +60,17 @@ public class UserDao implements IUserDao{
     }
 
     @Override
-    public User findById(int id) {
+    public User findById(int user_id) {
+    	Session session = sessionFactory.getCurrentSession();
     	session.beginTransaction();
-    	User user = (User) session.createQuery("from User u where u.user_id=:user_id").setInteger("user_id", id).uniqueResult();
+    	User user = (User) session.createQuery("from User u where u.user_id=:user_id").setInteger("user_id", user_id).uniqueResult();
     	session.getTransaction().commit();
     	return user;
     }
 
     @Override
     public User findByLogin(String login) {
+    	Session session = sessionFactory.getCurrentSession();
     	session.beginTransaction();
     	User user = (User) session.createQuery("from User u where u.login=:login").setString("login", login).uniqueResult();
     	session.getTransaction().commit();

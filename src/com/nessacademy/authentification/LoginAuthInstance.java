@@ -9,7 +9,7 @@ public class LoginAuthInstance {
     
     static private LoginAuthInstance loginAuthInstance = new LoginAuthInstance();
 
-    private UserService userService = new UserService();
+    static private UserService userService = new UserService();
     
     private LoginAuthInstance() {
     }
